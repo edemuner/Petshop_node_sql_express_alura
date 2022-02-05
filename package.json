@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/edemuner/alura_rest_express_sql_project/issues"
   },
-  "homepage": "https://github.com/edemuner/alura_rest_express_sql_project#readme"
+  "homepage": "https://github.com/edemuner/alura_rest_express_sql_project#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
