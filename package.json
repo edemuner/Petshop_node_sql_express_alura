@@ -1,0 +1,19 @@
+{
+  "name": "projeto-nodejs-rest",
+  "version": "1.0.0",
+  "description": "meu primeiro projeto com node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edemuner/alura_rest_express_sql_project.git"
+  },
+  "author": "Eduardo Demuner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edemuner/alura_rest_express_sql_project/issues"
+  },
+  "homepage": "https://github.com/edemuner/alura_rest_express_sql_project#readme"
+}
