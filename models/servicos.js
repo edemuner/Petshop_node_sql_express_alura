@@ -5,9 +5,9 @@ class Servico {
 
     adiciona(servico, res){
 
-        const sql = 'INSERTO INTO Servicos SET ?'
+        const sql = 'INSERT INTO Servicos SET ?'
 
-        conexao.query(sql, servico, (erros, resultados) => {
+        conexao.query(sql, servico, (erro, resultados) => {
             if (erro) {
                 res.status(400).json(erro)
             } else {
@@ -16,3 +16,5 @@ class Servico {
         })
     }
 }
+
+module.exports = new Servico

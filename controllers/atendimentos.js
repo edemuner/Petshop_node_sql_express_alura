@@ -1,4 +1,6 @@
 const Atendimento = require('../models/atendimentos')
+const Servico = require('../models/servicos')
+
 
 module.exports = app => {
     app.get('/atendimentos', (req, res) => {
@@ -29,5 +31,10 @@ module.exports = app => {
     app.delete('/atendimentos/:id', (req, res) => {
         const id = parseInt(req.params.id)
         Atendimento.deleta(id, res)
+    })
+
+    app.post('/servicos', (req, res) => {
+        const servico = req.body
+        Servico.adiciona(servico, res)
     })
 }
