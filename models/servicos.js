@@ -17,13 +17,18 @@ class Servico {
     }
 
     buscaIdPorNome(nome, res){
-        const sql = 'SELECT id FROM Servicos WHERE Nome = ?'
-        return conexao.query(sql, nome, (erro, resultado) => {
-            if (erro) {
-                res.status(400).json(erro)
-            } else {
-                return resultado
-            }
+        return new Promise((resolve, reject) => {
+            const sql = 'SELECT id FROM Servicos WHERE Nome = ?'
+
+            var id = null
+
+            conexao.query(sql, nome, (erro, resultado) => {
+                if (erro) {
+                    res.status(400).json(erro)
+                } else {
+                    resolve(resultado)
+                }
+            })
         })
     }
 }

@@ -13,12 +13,16 @@ module.exports = app => {
         Atendimento.buscaPorId(id, res)
     })
 
-    app.post('/atendimentos', (req, res) => {
-
+    app.post('/atendimentos', async (req, res) => {
         const atendimento = req.body
 
-        Atendimento.adiciona(atendimento, res)
-    
+        var idserv = null
+
+        await Servico.buscaIdPorNome(req.body.servico, res).then((resultado) => {
+            idserv = resultado[0].id
+        })
+        console.log(atendimento)
+        Atendimento.adiciona({...atendimento, idserv}, res)
     })
 
     app.patch('/atendimentos/:id', (req, res) => {
