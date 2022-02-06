@@ -18,7 +18,7 @@ class Atendimento {
             {
                 nome: 'data',
                 valido:dataValida,
-                mensagem: 'Data dve ser maior ou igual a data atual'
+                mensagem: 'Data deve ser maior ou igual a data atual'
             },
             {
                 nome: 'cliente',
