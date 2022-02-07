@@ -18,11 +18,14 @@ module.exports = app => {
 
         var idserv = null
 
-        await Servico.buscaIdPorNome(req.body.servico, res).then((resultado) => {
+        // this function waits for the query that seeks for the id giving the name
+        await Servico.buscaIdPorNome(req.body.idserv, res).then((resultado) => {
             idserv = resultado[0].id
         })
-        console.log(atendimento)
-        Atendimento.adiciona({...atendimento, idserv}, res)
+
+        // after getting the id, the field passed to the add query is changed
+        atendimento.idserv = idserv
+        Atendimento.adiciona(atendimento, res)
     })
 
     app.patch('/atendimentos/:id', (req, res) => {

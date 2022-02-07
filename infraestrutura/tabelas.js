@@ -20,7 +20,7 @@ class Tabelas {
         'observacoes text,' + 
         'PRIMARY KEY(id),' + 
         'idserv int NOT NULL,' + 
-        'FOREIGN KEY(idserv) REFERENCES Atendimentos(id))'
+        'FOREIGN KEY(idserv) REFERENCES Servicos(id))'
 
         this.conexao.query(sql, (erro) => {
             if (erro) console.log(erro)

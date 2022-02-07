@@ -18,7 +18,7 @@ class Servico {
 
     buscaIdPorNome(nome, res){
         return new Promise((resolve, reject) => {
-            const sql = 'SELECT id FROM Servicos WHERE Nome = ?'
+            const sql = 'SELECT id FROM Servicos WHERE nome = ?'
 
             var id = null
 
