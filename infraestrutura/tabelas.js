@@ -5,6 +5,7 @@ class Tabelas {
         console.log('Tabelas foram chamadas')
         this.criarAtendimentos()
         this.criarServicos()
+        this.criarPets()
     }
 
     criarAtendimentos(){
@@ -42,6 +43,18 @@ class Tabelas {
             else {
                 console.log('Criada tabela de serviços')
             }
+        })
+    }
+
+    criarPets(){
+        const sql = 'CREATE TABLE IF NOT EXISTS Pets (' +
+                    'id int NOT NULL AUTO_INCREMENT,' +
+                    'nome varchar(20),' +
+                    'imagem varchar(200),' +
+                    'PRIMARY KEY (id))'
+        this.conexao.query(sql, erro => {
+            if (erro) console.log(erro)
+            else console.log('Tabela pet criada com sucesso')
         })
     }
 }
