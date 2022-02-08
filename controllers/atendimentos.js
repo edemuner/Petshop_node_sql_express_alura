@@ -25,7 +25,13 @@ module.exports = app => {
 
         // after getting the id, the field passed to the add query is changed
         atendimento.idserv = idserv
-        Atendimento.adiciona(atendimento, res)
+        Atendimento.adiciona(atendimento)
+        .then(atendimentoCadastrado => {
+            res.status(201).json(atendimentoCadastrado)
+        })
+        .catch(erros => {
+            res.status(400).json(erros)
+        })
     })
 
     app.patch('/atendimentos/:id', (req, res) => {
