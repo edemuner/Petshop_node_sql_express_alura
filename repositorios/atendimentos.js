@@ -14,6 +14,12 @@ class Atendimento {
         return query(sql)
     }
 
+    buscaPorId(id){
+         
+        const sql = `SELECT * FROM Atendimentos WHERE id=${id}`
+
+        return query(sql)
+    }
 }
 
 module.exports = new Atendimento

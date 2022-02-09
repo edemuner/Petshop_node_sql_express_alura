@@ -1,5 +1,4 @@
 const Atendimento = require('../models/atendimentos')
-const Servico = require('../models/servicos')
 
 
 module.exports = app => {
@@ -12,7 +11,14 @@ module.exports = app => {
     app.get('/atendimentos/:id', (req, res) => {
 
         const id = parseInt(req.params.id)
-        Atendimento.buscaPorId(id, res)
+        Atendimento.buscaPorId(id)
+        .then(resultado => {
+            console.log(resultado)
+            res.json(resultado)
+        })
+        .catch(erro => {
+            res.status(400).json(erro)
+        })
     })
 
     app.post('/atendimentos', async (req, res) => {
