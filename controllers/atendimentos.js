@@ -4,7 +4,9 @@ const Servico = require('../models/servicos')
 
 module.exports = app => {
     app.get('/atendimentos', (req, res) => {
-        Atendimento.lista(res)
+        Atendimento.lista()
+            .then(resultados => res.json(resultados))
+            .catch(erro => res.status(400).json(erro))
     })
 
     app.get('/atendimentos/:id', (req, res) => {
