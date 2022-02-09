@@ -13,7 +13,6 @@ module.exports = app => {
         const id = parseInt(req.params.id)
         Atendimento.buscaPorId(id)
         .then(resultado => {
-            console.log(resultado)
             res.json(resultado)
         })
         .catch(erro => {
@@ -53,7 +52,9 @@ module.exports = app => {
 
     app.delete('/atendimentos/:id', (req, res) => {
         const id = parseInt(req.params.id)
-        Atendimento.deleta(id, res)
+        Atendimento.deleta(id)
+        .then(resultado => res.json(resultado))
+        .catch(erro => res.status(400).json(erro))
     })
 
 }
