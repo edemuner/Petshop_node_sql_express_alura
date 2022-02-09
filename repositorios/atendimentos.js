@@ -20,6 +20,13 @@ class Atendimento {
 
         return query(sql)
     }
+
+    altera(id, valores){
+
+        const sql = 'UPDATE Atendimentos SET ? WHERE id=?'
+
+        return query(sql, [valores, id])
+    }
 }
 
 module.exports = new Atendimento

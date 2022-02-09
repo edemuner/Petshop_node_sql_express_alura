@@ -83,22 +83,22 @@ class Atendimento {
             })
     }
 
-    altera(id, valores, res){
+    altera(id, valores){
 
         if (valores.data){
             valores.data = moment(valores.data, 'DD-MM-YYYY hh:mm:ss').format('YYYY-MM-DD HH:mm:ss')
         }
 
-        const sql = 'UPDATE Atendimentos SET ? WHERE id=?'
+        return repositorio.altera(id, valores)
 
-        conexao.query(sql, [valores, id], (erro, resultados) => {
-            if (erro){
-                res.status(400).json(erro)
-            } else {
-                res.status(200).json({...valores, id})
-            }
+        // conexao.query(sql, [valores, id], (erro, resultados) => {
+        //     if (erro){
+        //         res.status(400).json(erro)
+        //     } else {
+        //         res.status(200).json({...valores, id})
+        //     }
 
-        })
+        // })
     }
 
     deleta(id, res){
