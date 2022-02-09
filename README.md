@@ -1,1 +1,1 @@
-Project of a pet-shop where a Rest API is build to expose the CRUD services of registering customer pet-shop services, dealing with data about the customers, their pets, and the service itself.
+Project of a pet-shop where a Rest API is build with Node.JS, to expose the CRUD services of registering customer pet-shop services, dealing with data about the customers, their pets, and the service itself.
