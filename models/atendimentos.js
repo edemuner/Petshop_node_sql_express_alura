@@ -15,7 +15,7 @@ class Atendimento {
              const {nome} = campo
              const parametro = parametros[nome]
 
-             return !campo.valido(parametro)
+             return campo.valido(parametro)
         })
 
         this.validacoes = [

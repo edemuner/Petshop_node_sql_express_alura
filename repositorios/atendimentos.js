@@ -13,6 +13,7 @@ class Atendimento {
 
         return query(sql)
     }
+
 }
 
 module.exports = new Atendimento
