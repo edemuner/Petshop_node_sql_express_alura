@@ -13,17 +13,8 @@ class Servico {
     }
 
     buscaIdPorNome(nome, res){
-        return new Promise((resolve, reject) => {
-            const sql = 'SELECT id FROM Servicos WHERE nome = ?'
-
-            conexao.query(sql, nome, (erro, resultado) => {
-                if (erro) {
-                    res.status(400).json(erro)
-                } else {
-                    resolve(resultado)
-                }
-            })
-        })
+        
+        return repositorio.buscaIdPorNome(nome)
     }
 }
 

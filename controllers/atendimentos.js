@@ -1,4 +1,5 @@
 const Atendimento = require('../models/atendimentos')
+const Servico = require('../models/servicos')
 
 
 module.exports = app => {
@@ -21,24 +22,23 @@ module.exports = app => {
     })
 
     app.post('/atendimentos', async (req, res) => {
+
         const atendimento = req.body
 
-        var idserv = null
+        Servico.buscaIdPorNome(req.body.idserv)
+        .then((resultado) => {
+            atendimento.idserv = resultado[0].id
 
-        // this function waits for the query that seeks for the id giving the name
-        await Servico.buscaIdPorNome(req.body.idserv, res).then((resultado) => {
-            idserv = resultado[0].id
+            Atendimento.adiciona(atendimento)
+            .then(atendimentoCadastrado => {
+                res.json(atendimentoCadastrado)
+            })
+            .catch(erros => {
+                res.status(400).json(erros)
+            })
         })
-
-        // after getting the id, the field passed to the add query is changed
-        atendimento.idserv = idserv
-        Atendimento.adiciona(atendimento)
-        .then(atendimentoCadastrado => {
-            res.status(201).json(atendimentoCadastrado)
-        })
-        .catch(erros => {
-            res.status(400).json(erros)
-        })
+        .catch(erro => res.status(400).json(erro))
+        
     })
 
     app.patch('/atendimentos/:id', (req, res) => {

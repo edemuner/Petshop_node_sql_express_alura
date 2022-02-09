@@ -8,6 +8,13 @@ class Servico {
 
         return query(sql, servico)
     }
+
+    buscaIdPorNome(nome){
+
+        const sql = 'SELECT id FROM Servicos WHERE nome = ?'
+
+        return query(sql, nome)
+    }
 }
 
 module.exports = new Servico
