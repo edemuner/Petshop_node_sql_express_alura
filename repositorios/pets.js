@@ -7,6 +7,12 @@ class Pets {
         const sql = 'INSERT INTO Pets SET ?'
         return query(sql, pet)
     }
+
+    buscaIdPorNome(nome){
+
+        const sql = 'SELECT id FROM Pets WHERE nome = ?'
+        return query(sql, nome)
+    }
 }
 
 module.exports = new Pets

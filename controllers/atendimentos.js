@@ -1,5 +1,7 @@
 const Atendimento = require('../models/atendimentos')
 const Servico = require('../models/servicos')
+const pets = require('../repositorios/pets')
+const Pets = require('../models/pets')
 
 
 module.exports = app => {
@@ -24,17 +26,23 @@ module.exports = app => {
     app.post('/atendimentos', async (req, res) => {
 
         const atendimento = req.body
+        console.log(atendimento)
 
-        Servico.buscaIdPorNome(req.body.idserv)
-        .then((resultado) => {
-            atendimento.idserv = resultado[0].id
+        Pets.buscaIdPorNome(atendimento.idpet)
+        .then(resultado => {
+            atendimento.idpet = resultado[0].id
+        
+            Servico.buscaIdPorNome(atendimento.idserv)
+            .then((resultado) => {
+                atendimento.idserv = resultado[0].id
 
-            Atendimento.adiciona(atendimento)
-            .then(atendimentoCadastrado => {
-                res.json(atendimentoCadastrado)
-            })
-            .catch(erros => {
-                res.status(400).json(erros)
+                Atendimento.adiciona(atendimento)
+                .then(atendimentoCadastrado => {
+                    res.json(atendimentoCadastrado)
+                })
+                .catch(erros => {
+                    res.status(400).json(erros)
+                })
             })
         })
         .catch(erro => res.status(400).json(erro))

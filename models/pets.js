@@ -17,6 +17,11 @@ class Pet {
                 }
             })
     }
+
+    buscaIdPorNome(nome){
+        
+        return repositorio.buscaIdPorNome(nome)
+    }
 }
 
 

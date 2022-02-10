@@ -12,7 +12,7 @@ class Servico {
             })
     }
 
-    buscaIdPorNome(nome, res){
+    buscaIdPorNome(nome){
         
         return repositorio.buscaIdPorNome(nome)
     }
