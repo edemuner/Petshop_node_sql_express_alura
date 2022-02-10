@@ -1,23 +1,30 @@
 const fs = require('fs')
 const path = require('path')
 
-module.exports = (caminho, nomeDoArquivo, callBackImagemCriada) => {
+const getFile = (caminho, nomeDoArquivo, callBackImagemCriada) => {
 
-    const tiposValidos = ['.jpg', '.png', '.jpeg']
-    const tipo = path.extname(caminho)
-    const tipoInvalido = tiposValidos.indexOf(tipo) === -1
+    return new Promise(() => {
+        
+        const tiposValidos = ['.jpg', '.png', '.jpeg']
+        const tipo = path.extname(caminho)
+        const tipoInvalido = tiposValidos.indexOf(tipo) === -1
 
-    if (tipoInvalido){
-        const erro = 'Tipo é inválido'
-        console.log('Erro, extensão do arquivo inválida')
-        callBackImagemCriada(erro)
-    } else {
-        const novoCaminho = `./assets/imagens/${nomeDoArquivo}${tipo}`
+        if (tipoInvalido){
+            const erro = 'Tipo é inválido'
+            console.log('Erro, extensão do arquivo inválida')
+            reject(callBackImagemCriada(erro))
 
-        fs.createReadStream(caminho)
-        .pipe(fs.createWriteStream(novoCaminho))
-        .on('finish', () => callBackImagemCriada(false, novoCaminho))
-    }
- 
+        } else {
+            const novoCaminho = `./assets/imagens/${nomeDoArquivo}${tipo}`
+            resolve(
+                fs.createReadStream(caminho)
+                .pipe(fs.createWriteStream(novoCaminho))
+                .on('finish', () => callBackImagemCriada(false, novoCaminho))
+            )
+        }
+    })
 }
+
+
+module.exports = getFile
 
