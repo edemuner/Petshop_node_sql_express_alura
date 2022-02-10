@@ -4,7 +4,8 @@ const repositorio = require('../repositorios/pets')
 class Pet {
 
     adiciona(pet){
-            return uploadDeArquivo(pet.imagem, pet.nome, (erro, novoCaminho) => {
+            return uploadDeArquivo(pet.imagem, pet.nome, (erro, novoCaminho)  => 
+                {
                 if (erro){
                     return erro
                 } else {
@@ -17,5 +18,6 @@ class Pet {
             })
     }
 }
+
 
 module.exports = new Pet

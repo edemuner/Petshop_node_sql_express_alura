@@ -3,7 +3,7 @@ const path = require('path')
 
 const getFile = (caminho, nomeDoArquivo, callBackImagemCriada) => {
 
-    return new Promise(() => {
+    return new Promise((resolve, reject) => {
         
         const tiposValidos = ['.jpg', '.png', '.jpeg']
         const tipo = path.extname(caminho)
