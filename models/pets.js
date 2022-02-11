@@ -1,41 +1,41 @@
-const uploadDeArquivo = require('../infraestrutura/arquivos/uploadDeArquivos')
-const repositorio = require('../repositorios/pets')
+const fileUpload = require('../infrastructure/files/fileUpload')
+const repository = require('../repositories/pets')
 
 class Pet {
 
-    adiciona(pet){
-            return uploadDeArquivo(pet.imagem, pet.nome, (erro, novoCaminho)  => 
+    add(pet){
+            return fileUpload(pet.image, pet.name, (error, newPath)  => 
                 {
-                if (erro){
-                    return erro
+                if (error){
+                    return error
                 } else {
-                    const novoPet = {
-                        nome:pet.nome,
-                        imagem:novoCaminho
+                    const newPet = {
+                        name:pet.name,
+                        image:newPath
                     }
-                    return repositorio.adiciona(novoPet)
+                    return repository.add(newPet)
                 }
             })
     }
 
-    buscaIdPorNome(nome){
+    getIdByName(name){
         
-        return repositorio.buscaIdPorNome(nome)
+        return repository.getIdByName(name)
     }
 
-    lista(){
+    list(){
 
-        return repositorio.lista()
+        return repository.list()
     }
 
     update(id, val){
 
-        return repositorio.update(id, val)
+        return repository.update(id, val)
     }
 
     delete(id){
 
-        return repositorio.delete(id)
+        return repository.delete(id)
     }
 }
 

@@ -1,33 +1,33 @@
-const query = require('../infraestrutura/database/queries')
+const query = require('../infrastructure/database/queries')
 
-class Servico {
+class Service {
 
-    adiciona(servico){
+    add(service){
 
         const sql = 'INSERT INTO Servicos SET ?'
 
-        return query(sql, servico)
+        return query(sql, service)
     }
 
-    buscaIdPorNome(nome){
+    getIdByName(name){
 
         const sql = 'SELECT id FROM Servicos WHERE nome = ?'
 
-        return query(sql, nome)
+        return query(sql, name)
     }
 
-    lista(){
+    list(){
         
         const sql = 'SELECT * FROM Servicos'
 
         return query(sql)
     }
 
-    update(id, val){
+    update(id, values){
 
         const sql = 'UPDATE Servicos SET ? WHERE id=?'
 
-        return query(sql, [val, id])
+        return query(sql, [values, id])
     }
 
     delete(id){
@@ -38,4 +38,4 @@ class Servico {
     }
 }
 
-module.exports = new Servico
+module.exports = new Service

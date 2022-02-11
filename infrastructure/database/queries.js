@@ -1,4 +1,4 @@
-const conexao = require('./conexao')
+const conexao = require('./connection')
 
 const executaQuery = (query, params = '') => {
     return new Promise((resolve, reject) => {

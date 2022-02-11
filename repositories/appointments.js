@@ -1,34 +1,34 @@
-const query = require('../infraestrutura/database/queries')
+const query = require('../infrastructure/database/queries')
 
-class Atendimento {
+class Appointment {
 
-    adiciona(atendimento){
+    add(appointment){
         const sql = 'INSERT INTO Atendimentos SET ?'
 
-        return query(sql, atendimento)
+        return query(sql, appointment)
     }
 
-    lista() {
+    list() {
         const sql = 'SELECT * FROM Atendimentos'
 
         return query(sql)
     }
 
-    buscaPorId(id){
+    getId(id){
          
         const sql = `SELECT * FROM Atendimentos WHERE id=${id}`
 
         return query(sql)
     }
 
-    altera(id, valores){
+    update(id, values){
 
         const sql = 'UPDATE Atendimentos SET ? WHERE id=?'
 
-        return query(sql, [valores, id])
+        return query(sql, [values, id])
     }
 
-    deleta(id) {
+    delete(id) {
 
         const sql = 'DELETE FROM Atendimentos WHERE id=?'
 
@@ -36,4 +36,4 @@ class Atendimento {
     }
 }
 
-module.exports = new Atendimento
+module.exports = new Appointment

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ad servicos/clientes-api.js & nodemon ad index.js && fg",
+    "start": "nodemon ad clientes-api/clientes-api.js & nodemon ad index.js && fg",
     "dev": "nodemon --inspect index.js"
   },
   "repository": {
