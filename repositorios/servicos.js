@@ -29,6 +29,13 @@ class Servico {
 
         return query(sql, [val, id])
     }
+
+    delete(id){
+
+        const sql = 'DELETE FROM Servicos WHERE id=?'
+
+        return query(sql, id)
+    }
 }
 
 module.exports = new Servico

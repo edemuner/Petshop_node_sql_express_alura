@@ -22,4 +22,11 @@ module.exports = app => {
         .then(resultado => res.json(resultado))
         .catch(erro => res.status(400).json(erro))
     })
+
+    app.delete('/servicos/:id', (req, res) => {
+        const id = parseInt(req.params.id)
+        Servico.delete(id)
+        .then(resultado => res.json(resultado))
+        .catch(erro => res.status(400).json(erro))
+    })
 }

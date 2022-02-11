@@ -26,6 +26,11 @@ class Servico {
 
         return repositorio.update(id, val)
     }
+
+    delete(id){
+
+        return repositorio.delete(id)
+    }
 }
 
 module.exports = new Servico
