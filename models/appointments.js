@@ -76,8 +76,8 @@ class Appointment {
                 const appointment = results[0]
                 const cpf = appointment.client
 
-                const { date } = await axios.get(`http://localhost:8082/${cpf}`)
-                appointment.client = date
+                const { data } = await axios.get(`http://localhost:8082/${cpf}`)
+                appointment.client = data
                 return appointment
             })
     }
