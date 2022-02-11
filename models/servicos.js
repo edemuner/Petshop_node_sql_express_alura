@@ -18,8 +18,13 @@ class Servico {
     }
 
     lista(){
-        
+
         return repositorio.lista()
+    }
+
+    update(id, val){
+
+        return repositorio.update(id, val)
     }
 }
 

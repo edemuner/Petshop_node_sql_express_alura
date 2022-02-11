@@ -1,6 +1,5 @@
 const Atendimento = require('../models/atendimentos')
 const Servico = require('../models/servicos')
-const pets = require('../repositorios/pets')
 const Pets = require('../models/pets')
 
 

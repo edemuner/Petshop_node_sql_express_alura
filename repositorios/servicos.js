@@ -22,6 +22,13 @@ class Servico {
 
         return query(sql)
     }
+
+    update(id, val){
+
+        const sql = 'UPDATE Servicos SET ? WHERE id=?'
+
+        return query(sql, [val, id])
+    }
 }
 
 module.exports = new Servico
