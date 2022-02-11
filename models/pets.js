@@ -4,14 +4,14 @@ const repository = require('../repositories/pets')
 class Pet {
 
     add(pet){
-            return fileUpload(pet.image, pet.name, (error, newPath)  => 
+            return fileUpload(pet.imagem, pet.nome, (error, newPath)  => 
                 {
                 if (error){
                     return error
                 } else {
                     const newPet = {
-                        name:pet.name,
-                        image:newPath
+                        nome:pet.nome,
+                        imagem:newPath
                     }
                     return repository.add(newPet)
                 }
