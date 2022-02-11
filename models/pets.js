@@ -22,6 +22,11 @@ class Pet {
         
         return repositorio.buscaIdPorNome(nome)
     }
+
+    lista(){
+
+        return repositorio.lista()
+    }
 }
 
 

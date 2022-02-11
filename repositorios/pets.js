@@ -13,6 +13,12 @@ class Pets {
         const sql = 'SELECT id FROM Pets WHERE nome = ?'
         return query(sql, nome)
     }
+
+    lista(){
+        
+        const sql = 'SELECT * FROM Pets'
+        return query(sql)
+    }
 }
 
 module.exports = new Pets
