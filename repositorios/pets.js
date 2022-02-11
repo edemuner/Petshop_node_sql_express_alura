@@ -19,6 +19,13 @@ class Pets {
         const sql = 'SELECT * FROM Pets'
         return query(sql)
     }
+
+    update(id, val){
+
+        const sql = 'UPDATE Pets SET ? WHERE id=?'
+
+        return query(sql, [val, id])
+    }
 }
 
 module.exports = new Pets
