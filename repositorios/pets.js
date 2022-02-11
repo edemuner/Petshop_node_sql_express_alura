@@ -26,6 +26,13 @@ class Pets {
 
         return query(sql, [val, id])
     }
+
+    delete(id){
+
+        const sql = 'DELETE FROM Pets WHERE id=?'
+
+        return query(sql, id)
+    }
 }
 
 module.exports = new Pets

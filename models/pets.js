@@ -32,6 +32,11 @@ class Pet {
 
         return repositorio.update(id, val)
     }
+
+    delete(id){
+
+        return repositorio.delete(id)
+    }
 }
 
 
