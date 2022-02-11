@@ -15,6 +15,13 @@ class Servico {
 
         return query(sql, nome)
     }
+
+    lista(){
+        
+        const sql = 'SELECT * FROM Servicos'
+
+        return query(sql)
+    }
 }
 
 module.exports = new Servico

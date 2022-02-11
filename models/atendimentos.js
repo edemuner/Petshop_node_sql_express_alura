@@ -32,6 +32,12 @@ class Atendimento {
         ]
     }
 
+    /**
+     * LEMBRETE - modificar a implementação de adicionar atendimento, para que os dados relativos ao pet e serviço
+     * sejam passados como parâmetros na url, e não no corpo da requisição
+     * o que vai permitir abrir mão da função getIdByName (será?)
+     */
+
     adiciona(atendimento){
         
         const dataCriacao = moment().format('YYYY-MM-DD HH:mm:ss')

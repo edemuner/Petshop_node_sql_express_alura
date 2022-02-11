@@ -16,6 +16,11 @@ class Servico {
         
         return repositorio.buscaIdPorNome(nome)
     }
+
+    lista(){
+        
+        return repositorio.lista()
+    }
 }
 
 module.exports = new Servico

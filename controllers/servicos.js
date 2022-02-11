@@ -8,4 +8,10 @@ module.exports = app => {
             .then(resultado => res.json(resultado))
             .catch(erro => res.status(400).json(erro))
     })
+
+    app.get('/servicos', (req, res) => {
+        Servico.lista()
+        .then(resultado => res.json(resultado))
+        .catch(erro => res.status(400).json(erro))
+    })
 }
