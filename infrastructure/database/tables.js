@@ -2,7 +2,7 @@ class Tabelas {
 
     init(conexao){
         this.conexao = conexao
-        console.log('Tabelas foram chamadas')
+        console.log('Tables called')
         this.criarAtendimentos()
         this.criarServicos()
         this.criarPets()
@@ -26,7 +26,7 @@ class Tabelas {
         this.conexao.query(sql, (erro) => {
             if (erro) console.log(erro)
             else {
-                console.log('Tabela de atendimentos criada com sucesso')
+                console.log('Created appointment table')
             }
         })
     }
@@ -41,7 +41,7 @@ class Tabelas {
         this.conexao.query(sql, (erro) => {
             if (erro) console.log(erro)
             else {
-                console.log('Criada tabela de serviços')
+                console.log('Created services table')
             }
         })
     }
@@ -54,7 +54,7 @@ class Tabelas {
                     'PRIMARY KEY (id))'
         this.conexao.query(sql, erro => {
             if (erro) console.log(erro)
-            else console.log('Tabela pet criada com sucesso')
+            else console.log('Created pets table')
         })
     }
 }
