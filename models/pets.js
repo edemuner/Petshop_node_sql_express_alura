@@ -1,19 +1,19 @@
 const fileUpload = require('../infrastructure/files/fileUpload')
-const repository = require('../repositories/pets')
-const sequelize = require('sequelize')
+const {DataTypes} = require('sequelize')
 
-const Pets = sequelize.define('pets', {
+module.exports = (sequelize) => { 
+    sequelize.define('pets', {
     name : {
-        type: sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     image: {
-        type: sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
 })
+}
 
-Pets.hasMany(Appointments)
 
 // class Pet {
 
@@ -53,5 +53,3 @@ Pets.hasMany(Appointments)
 //     }
 // }
 
-
-module.exports = new Pet

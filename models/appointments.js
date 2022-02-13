@@ -1,30 +1,30 @@
 const axios  = require('axios')
-const sequelize = require('sequelize')
+const {DataTypes} = require('sequelize')
 
-const Appointments = sequelize.define('appointments', {
+
+module.exports = (sequelize) => { sequelize.define('appointments', {
     client: {
-        type: sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     date: {
-        type: sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false
     },
     creationDate: {
-        type: sequelize.DATE,
+        type: DataTypes.DATE,
         allowNull: false
     },
     status: {
-        type: sequelize.STRING,        
+        type: DataTypes.STRING,        
         allowNull: false
     },
     observations: {
-        type: sequelize.STRING
+        type: DataTypes.STRING
     }
+})
 }
-)
-Appointments.belongsTo(Pets)
-Appointments.belongsTo(Services)
+
 
 // class Appointment {
 

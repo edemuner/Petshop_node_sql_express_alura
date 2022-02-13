@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize')
 const config = require('config')
+const { applyExtraSetup } = require('../../models/extraSetup')
 
-module.exports = new Sequelize(
+
+const sequelize = new Sequelize(
     config.get('mysql.database'),
     config.get('mysql.user'),
     config.get('mysql.password'),
@@ -11,3 +13,16 @@ module.exports = new Sequelize(
     }
 )
 
+const modelDefiners = [
+    require('../../models/appointments'),
+    require('../../models/pets'),
+    require('../../models/services'),
+]
+// it gets the models definitions and pass the above instance of sequelize to them
+for (const modelDefiner of modelDefiners){
+    modelDefiner(sequelize)
+}
+// and then make their relations with extra setup
+applyExtraSetup(sequelize)
+
+module.exports = sequelize

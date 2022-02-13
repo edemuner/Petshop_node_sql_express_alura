@@ -1,19 +1,18 @@
-const connection = require('../infrastructure/database/connection')
-const repository = require('../repositories/services')
-const sequelize = require('sequelize')
+const {DataTypes} = require('sequelize')
 
-const Services = sequelize.define('services', {
+
+module.exports = (sequelize) => {
+    sequelize.define('services', {
     name: {
-        type: sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     price: {
-        type: sequelize.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull: false
     }
 })
-
-Services.hasMany(Appointments)
+}
 
 // class Service {
 
@@ -47,4 +46,3 @@ Services.hasMany(Appointments)
 //     }
 // }
 
-module.exports = new Service

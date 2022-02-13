@@ -1,10 +1,12 @@
-const customExpress = require('./config/customExpress')
-const connection = require('./infrastructure/database/connection');
+const customExpress = require('./config/customExpress');
 
-
+// for now, just a testing index
 (async () => {
     try{
-    connection.authenticate();
+    const connection = require('./infrastructure/database/connection')
+    const appointment = require('./models/appointments');
+
+    connection.sync();
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
