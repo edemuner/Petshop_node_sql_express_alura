@@ -1,17 +1,20 @@
 const customExpress = require('./config/customExpress');
+const connection = require('./infrastructure/database/connection');
+
+
+connection.sync()
+.then(results => console.log('ok'))
+.catch(erro => console.log('oi'))
 
 // for now, just a testing index
-(async () => {
-    try{
-    const connection = require('./infrastructure/database/connection')
-    const appointment = require('./models/appointments');
-
-    connection.sync();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-})()
+// (async () => {
+//     try{
+//       connection.sync();
+//       console.log('Connection has been established successfully.');
+//   } catch (error) {
+//       console.error('Unable to connect to the database:', error);
+//   }
+// })()
 
 // connection.connect(error => {
 //     if (error){

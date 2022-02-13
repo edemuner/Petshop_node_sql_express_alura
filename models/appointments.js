@@ -1,5 +1,6 @@
 const axios  = require('axios')
 const {DataTypes} = require('sequelize')
+const moment = require('moment')
 
 
 module.exports = (sequelize) => { sequelize.define('appointments', {
@@ -7,13 +8,17 @@ module.exports = (sequelize) => { sequelize.define('appointments', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    date: {
-        type: DataTypes.DATE,
-        allowNull: false
-    },
     creationDate: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
+        defaultValue: DataTypes.NOW
+    },
+    date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+            isBefore: creationDate
+        }
     },
     status: {
         type: DataTypes.STRING,        
