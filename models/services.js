@@ -13,6 +13,8 @@ const Services = sequelize.define('services', {
     }
 })
 
+Services.hasMany(Appointments)
+
 // class Service {
 
 

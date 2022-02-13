@@ -1,6 +1,5 @@
 const customExpress = require('./config/customExpress')
-const connection = require('./infrastructure/database/connection')
-const tables = require('./infrastructure/database/tables');
+const connection = require('./infrastructure/database/connection');
 
 
 (async () => {

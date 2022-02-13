@@ -23,6 +23,8 @@ const Appointments = sequelize.define('appointments', {
     }
 }
 )
+Appointments.belongsTo(Pets)
+Appointments.belongsTo(Services)
 
 // class Appointment {
 

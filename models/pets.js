@@ -13,6 +13,8 @@ const Pets = sequelize.define('pets', {
     },
 })
 
+Pets.hasMany(Appointments)
+
 // class Pet {
 
 //     add(pet){
