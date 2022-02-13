@@ -3,8 +3,15 @@ const connection = require('./infrastructure/database/connection');
 
 
 connection.sync()
-.then(results => console.log('ok'))
-.catch(erro => console.log('oi'))
+.then(() => {
+  console.log('Successfully connected to database')
+  const app = customExpress()
+  app.listen(3000, () => console.log('Server running at por 3000'))
+  app.get('/', (req, res) => {
+    res.send('oi')
+  })
+})
+.catch(erro => console.log('n'))
 
 // for now, just a testing index
 // (async () => {

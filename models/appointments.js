@@ -3,7 +3,9 @@ const {DataTypes} = require('sequelize')
 const moment = require('moment')
 
 
-module.exports = (sequelize) => { sequelize.define('appointments', {
+module.exports = (sequelize) => { 
+    const now = new Date()
+    sequelize.define('appointments', {
     client: {
         type: DataTypes.STRING,
         allowNull: false
@@ -11,13 +13,13 @@ module.exports = (sequelize) => { sequelize.define('appointments', {
     creationDate: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: now
     },
     date: {
         type: DataTypes.DATE,
         allowNull: false,
         validate: {
-            isBefore: creationDate
+            isBefore: now
         }
     },
     status: {
