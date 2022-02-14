@@ -1,31 +1,32 @@
-const Service = require('../models/services')
+const sequelize = require('../infrastructure/database/connection')
+const Service = require('../models/services')(sequelize)
 
 module.exports = app => {
 
     app.post('/services', (req, res) => {
         const service = req.body
-        Service.add(service)
+        Service.create(service)
             .then(results => res.json(results))
             .catch(error => res.status(400).json(error))
     })
 
     app.get('/services', (req, res) => {
-        Service.list()
-        .then(results => res.json(results))
-        .catch(error => res.status(400).json(error))
+        Service.findAll()
+            .then(results => res.json(results))
+            .catch(error => res.status(400).json(error))
     })
 
     app.patch('/services/:id', (req, res) => {
-        const id = parseInt(req.params.id)
+        const id = req.params.id
         const values = req.body
-        Service.update(id, values)
+        Service.update(values, { where : { id: id }})
         .then(results => res.json(results))
         .catch(error => res.status(400).json(error))
     })
 
     app.delete('/services/:id', (req, res) => {
-        const id = parseInt(req.params.id)
-        Service.delete(id)
+        const id = req.params.id
+        Service.destroy({ where: { id:id }})
         .then(results => res.json(results))
         .catch(error => res.status(400).json(error))
     })
