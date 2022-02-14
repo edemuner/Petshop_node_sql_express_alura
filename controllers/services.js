@@ -17,7 +17,7 @@ module.exports = app => {
     })
 
     app.patch('/services/:id', (req, res) => {
-        const id = parseInt(req.params.id)
+        const id = req.params.id
         const values = req.body
         Service.update(values, { where : { id: id }})
         .then(results => res.json(results))
@@ -25,8 +25,8 @@ module.exports = app => {
     })
 
     app.delete('/services/:id', (req, res) => {
-        const id = parseInt(req.params.id)
-        Service.delete(id)
+        const id = req.params.id
+        Service.destroy({ where: { id:id }})
         .then(results => res.json(results))
         .catch(error => res.status(400).json(error))
     })
