@@ -8,30 +8,4 @@ connection.sync()
   const app = customExpress()
   app.listen(3000, () => console.log('Server running at port 3000'))
 })
-.catch(erro => console.log('n'))
-
-// for now, just a testing index
-// (async () => {
-//     try{
-//       connection.sync();
-//       console.log('Connection has been established successfully.');
-//   } catch (error) {
-//       console.error('Unable to connect to the database:', error);
-//   }
-// })()
-
-// connection.connect(error => {
-//     if (error){
-//         console.log(error)
-//     } else {
-
-//         console.log('Successfully connected to database')
-        
-//         tables.init(connection)
-
-//         const app = customExpress()
-
-//         app.listen(3000, () => console.log('Server running at por 3000'))
-//     }
-// })
-
+.catch(erro => console.log('Something went wrong while trying to synchronize to database'))

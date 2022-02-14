@@ -1,14 +1,28 @@
-const Pet = require('../models/pets')
+const sequelize = require('../infrastructure/database/connection')
+const Pet = require('../models/pets')(sequelize)
+const fileUpload = require('../infrastructure/files/fileUpload')
+
 
 module.exports = app => {
 
     app.post('/pets', (req, res) => {
 
         const pet = req.body
-        Pet.add(pet)
-        .then(resultado => res.json(resultado))
-        .catch(erro => res.status(400).json(erro))
+        fileUpload(pet.image, pet.name, (error, newPath)  => {
+                
+                if (error){
+                    return error
+                } else {
+                    const newPet = {
+                        name:pet.name,
+                        image:newPath
+                    }
+                    return Pet.create(newPet)
+                    .then(results => res.json(results))
+                    .catch(error => res.status(400).json(error))
+                }
     })
+})
 
     app.get('/pets', (req, res) => {
 

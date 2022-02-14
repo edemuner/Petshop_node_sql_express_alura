@@ -1,8 +1,7 @@
-const fileUpload = require('../infrastructure/files/fileUpload')
 const {DataTypes} = require('sequelize')
 
 module.exports = (sequelize) => { 
-    sequelize.define('pets', {
+    const Pets = sequelize.define('pets', {
     name : {
         type: DataTypes.STRING,
         allowNull: false
@@ -12,6 +11,7 @@ module.exports = (sequelize) => {
         allowNull: false
     },
 })
+return Pets
 }
 
 
