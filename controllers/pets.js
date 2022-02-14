@@ -26,23 +26,23 @@ module.exports = app => {
 
     app.get('/pets', (req, res) => {
 
-        Pet.list()
+        Pet.findAll()
         .then(results => res.json(results))
         .catch(error => res.status(400).json(error))
     })
 
     app.patch('/pets/:id', (req, res) => {
 
-        const id = parseInt(req.params.id)
+        const id = req.params.id
         const values = req.body
-        Pet.update(id, values)
+        Pet.update(values, { where : { id : id }})
         .then(results => res.json(results))
         .catch(error => res.status(400).json(error))
     })
 
     app.delete('/pets/:id', (req, res) => {
-        const id = parseInt(req.params.id)
-        Pet.delete(id)
+        const id = req.params.id
+        Pet.destroy({ where: { id:id }})
         .then(results => res.json(results))
         .catch(error => res.status(400).json(error))
     })
