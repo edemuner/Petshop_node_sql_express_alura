@@ -6,7 +6,7 @@ connection.sync()
 .then(() => {
   console.log('Successfully connected to database')
   const app = customExpress()
-  app.listen(3000, () => console.log('Server running at por 3000'))
+  app.listen(3000, () => console.log('Server running at port 3000'))
   app.get('/', (req, res) => {
     res.send('oi')
   })

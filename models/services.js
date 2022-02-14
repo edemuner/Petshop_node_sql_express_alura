@@ -2,7 +2,7 @@ const {DataTypes} = require('sequelize')
 
 
 module.exports = (sequelize) => {
-    sequelize.define('services', {
+    const Service = sequelize.define('services', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
         allowNull: false
     }
 })
+return Service
 }
 
 // class Service {

@@ -1,10 +1,11 @@
-const Service = require('../models/services')
+const sequelize = require('../infrastructure/database/connection')
+const Service = require('../models/services')(sequelize)
 
 module.exports = app => {
 
     app.post('/services', (req, res) => {
         const service = req.body
-        Service.add(service)
+        Service.create(service)
             .then(results => res.json(results))
             .catch(error => res.status(400).json(error))
     })
