@@ -11,9 +11,9 @@ module.exports = app => {
     })
 
     app.get('/services', (req, res) => {
-        Service.list()
-        .then(results => res.json(results))
-        .catch(error => res.status(400).json(error))
+        Service.findAll()
+            .then(results => res.json(results))
+            .catch(error => res.status(400).json(error))
     })
 
     app.patch('/services/:id', (req, res) => {
