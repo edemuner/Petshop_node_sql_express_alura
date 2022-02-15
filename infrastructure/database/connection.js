@@ -24,5 +24,5 @@ for (const modelDefiner of modelDefiners){
 }
 // and then make their relations with extra setup
 applyExtraSetup(sequelize)
+.then(module.exports = sequelize)
 
-module.exports = sequelize

@@ -1,12 +1,12 @@
 
 // it exports the things the sequelize instance must do
-function applyExtraSetup(sequelize){
+async function applyExtraSetup(sequelize){
     const { appointments, services, pets } = sequelize.models
 
-    appointments.belongsTo(services)
-    appointments.belongsTo(pets)
-    services.hasMany(appointments)
-    pets.hasMany(appointments)
+    await appointments.belongsTo(services)
+    await appointments.belongsTo(pets)
+    await services.hasMany(appointments)
+    await pets.hasMany(appointments)
 }
 
 module.exports = { applyExtraSetup }
