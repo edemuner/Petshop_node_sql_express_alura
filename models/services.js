@@ -1,20 +1,3 @@
-const {DataTypes} = require('sequelize')
-
-
-module.exports = (sequelize) => {
-    const Service = sequelize.define('services', {
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    price: {
-        type: DataTypes.FLOAT,
-        allowNull: false
-    }
-})
-return Service
-}
-
 // class Service {
 
 
